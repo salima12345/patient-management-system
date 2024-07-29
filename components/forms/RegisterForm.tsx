@@ -22,7 +22,7 @@ import { PatientFormValidation } from "@/lib/validation";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
-import CustomFormField, { FormFieldType } from "../CustomFormField";
+import CustomFormField,{FormFieldType} from "../CustomFormField/CustomFormFied";
 import { FileUploader } from "../FileUploader";
 import SubmitButton from "../SubmitButton";
 
