@@ -24,7 +24,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
 import CustomFormField,{FormFieldType} from "../CustomFormField/CustomFormFied";
 import { FileUploader } from "../FileUploader";
-import SubmitButton from "../SubmitButton";
+import SubmitButton from "../Button/SubmitButton";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
