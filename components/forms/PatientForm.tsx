@@ -31,22 +31,25 @@ export const PatientForm = () => {
     setIsLoading(true);
 
     try {
-        const user = {
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-        };
-  
-        const newUser = await createUser(user);
-  
-        if (newUser) {
-          router.push(`/patients/${newUser.$id}/register`);
-        }
-      } catch (error) {
-        console.log(error);
+      const user = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+      };
+
+      const newUser = await createUser(user);
+      console.log('newUser', newUser);
+
+      if (newUser) {
+        router.push(`/patients/${newUser.$id}/register`);
+      } else {
+        console.error("Failed to create a new user: No user data returned.");
       }
-  
+    } catch (error) {
+      console.error("Error during user creation:", error);
+    } finally {
       setIsLoading(false);
+    }
   };
 
   return (
