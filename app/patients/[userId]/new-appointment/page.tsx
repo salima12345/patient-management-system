@@ -1,17 +1,13 @@
 import Image from "next/image";
-
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { getPatient } from "@/lib/actions/patient.actions";
 
-const Appointment = async ({ params: { userId } }: SearchParamProps) => {
-  console.log("User ID in Appointment page:", userId); 
+const Appointment = async ({ params: { userId }, searchParams }: SearchParamProps) => {
+  let patientId = searchParams.patientId;
 
-  const patient = await getPatient(userId);
-  console.log("Patient data in Appointment page:", patient); 
-
-  if (!patient) {
-    console.error("No patient found for the given userId");
+  if (Array.isArray(patientId)) {
+    patientId = patientId[0]; 
   }
+ 
 
   return (
     <div className="flex h-screen max-h-screen">
@@ -26,7 +22,7 @@ const Appointment = async ({ params: { userId } }: SearchParamProps) => {
           />
 
           <AppointmentForm
-            patientId={patient?.$id}
+            patientId={patientId || ""} 
             userId={userId}
             type="create"
           />
@@ -45,4 +41,5 @@ const Appointment = async ({ params: { userId } }: SearchParamProps) => {
     </div>
   );
 };
+
 export default Appointment;

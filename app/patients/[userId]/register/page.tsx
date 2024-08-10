@@ -8,11 +8,15 @@ import { getPatient, getUser } from "@/lib/actions/patient.actions";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
+  console.log("user data",user );
+
+
 
   const patient = await getPatient(userId);
+  console.log("Patient data",patient );
+
 
   if (patient) {
-    console.log("Patient data",patient );
 
     redirect(`/patients/${userId}/new-appointment`);} 
 
