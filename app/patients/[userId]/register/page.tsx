@@ -18,7 +18,8 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 
   if (patient) {
 
-    redirect(`/patients/${userId}/new-appointment`);} 
+    redirect(`/patients/${userId}/new-appointment`);
+  } 
 
   return (
     <div className="flex h-screen max-h-screen">

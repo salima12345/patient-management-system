@@ -2,11 +2,8 @@ import Image from "next/image";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
 
 const Appointment = async ({ params: { userId }, searchParams }: SearchParamProps) => {
-  let patientId = searchParams.patientId;
+  const patientId = (searchParams?.patientId as string) || "";
 
-  if (Array.isArray(patientId)) {
-    patientId = patientId[0]; 
-  }
  
 
   return (

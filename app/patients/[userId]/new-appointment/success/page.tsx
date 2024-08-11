@@ -11,11 +11,14 @@ const RequestSuccess = async ({
   params: { userId },
 }: SearchParamProps) => {
   const appointmentId = (searchParams?.appointmentId as string) || "";
-  const appointment = await getAppointment(appointmentId);
+  const patientId = (searchParams?.patientId as string) || "";
 
+  const appointment = await getAppointment(appointmentId);
+  
   const doctor = Doctors.find(
     (doctor) => doctor.name === appointment.primaryPhysician
   );
+  
 
   return (
     <div className=" flex h-screen max-h-screen px-[5%]">
@@ -68,7 +71,7 @@ const RequestSuccess = async ({
         </section>
 
         <Button variant="outline" className="shad-primary-btn" asChild>
-          <Link href={`/patients/${userId}/new-appointment`}>
+          <Link href={`/patients/${userId}/new-appointment?patientId=${patientId}`}>
             New Appointment
           </Link>
         </Button>
