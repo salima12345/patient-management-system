@@ -1,4 +1,3 @@
-
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -64,12 +63,9 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-    console.log('type',type)
-    console.log('patientId',patientId)
 
     try {
       if (type === "create" && patientId) {
-        console.log('Creating appointment');
         const appointment = {
           userId,
           patient: patientId,
@@ -79,18 +75,33 @@ export const AppointmentForm = ({
           status: status as Status,
           note: values.note,
         };
-        console.log('Appointment data:', appointment);
 
         const newAppointment = await createAppointment(appointment);
-        console.log('New appointment created:', newAppointment);
 
         if (newAppointment) {
           form.reset();
           router.push(`/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}&patientId=${patientId}`);
         }
       } else {
-        console.log('Updating appointment');
-        // Update appointment logic here
+        const appointmentToUpdate = {
+          userId,
+          appointmentId: appointment?.$id!,
+          appointment: {
+            primaryPhysician: values.primaryPhysician,
+            schedule: new Date(values.schedule),
+            status: status as Status,
+            cancellationReason: values.cancellationReason,
+          },
+          type,
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,  // Ajout de la propriété timeZone
+        };
+
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
+
+        if (updatedAppointment) {
+          setOpen && setOpen(false);
+          form.reset();
+        }
       }
     } catch (error) {
       console.error('Error during form submission:', error);
