@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏥 Patient Management System
 
-## Getting Started
+A modern healthcare patient management web application built using **Next.js**, **TypeScript**, **Twilio**, **TailwindCSS**, and **Appwrite**. Patients can register, book and manage appointments. Admins can schedule, confirm, and cancel appointments, with integrated **SMS notifications** for seamless communication.
 
-First, run the development server:
+
+---
+
+## ⚙️ Tech Stack
+
+- **Frontend:** Next.js, TypeScript, TailwindCSS, ShadCN UI
+- **Backend Services:** Appwrite (Authentication, Database, File Storage)
+- **Notifications:** Twilio (SMS)
+- **Monitoring:** Sentry
+
+---
+
+## 🔋 Features
+
+- 👉 **Patient Registration** – Secure sign-up with profile creation
+- 👉 **Book Appointments** – Patients can schedule one or more appointments
+- 👉 **Admin Dashboard** – Admins manage all appointments in real time
+- 👉 **Confirm / Schedule Appointments** – Admins set or approve times
+- 👉 **Cancel Appointments** – Admins can remove any scheduled session
+- 👉 **SMS Notifications** – Automatic SMS sent via Twilio when confirmed
+- 👉 **File Uploads** – Secure file uploads using Appwrite Storage
+- 👉 **Responsive Design** – Fully optimized for mobile, tablet, and desktop
+- 👉 **Error Monitoring** – Integrated with Sentry for performance and error tracking
+- 👉 **Scalable Architecture** – Modular, clean codebase with reusable components
+
+---
+
+## 🤸 Quick Start
+
+### ✅ Prerequisites
+
+Ensure the following are installed:
+
+- Git
+- Node.js (v16 or later)
+- npm
+
+
+
+### 📦 Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 🔐 Environment Setup
+
+Create a `.env.local` file in the project root:
+
+```env
+# Appwrite
+NEXT_PUBLIC_ENDPOINT=https://cloud.appwrite.io/v1
+PROJECT_ID=your_project_id
+API_KEY=your_appwrite_api_key
+DATABASE_ID=your_database_id
+PATIENT_COLLECTION_ID=your_patient_collection_id
+APPOINTMENT_COLLECTION_ID=your_appointment_collection_id
+NEXT_PUBLIC_BUCKET_ID=your_bucket_id
+
+# Admin passkey for secure admin panel access
+NEXT_PUBLIC_ADMIN_PASSKEY=111111
+```
+
+
+---
+
+## 🏃 Running the App Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Open [http://localhost:3000](http://localhost:3000) to view the app
+- Admin panel typically accessible via `/admin` (protected via `NEXT_PUBLIC_ADMIN_PASSKEY`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🧱 Folder Structure
 
-## Learn More
+```
+/src
+  /components      ← UI Components
+  /app             ← Next.js App Router (pages, layouts)
+  /lib             ← Appwrite + Twilio integrations
+  /hooks           ← Custom React hooks
+  /utils           ← Helper functions
+  /types           ← TypeScript types/interfaces
+  /store           ← Global state (e.g., Zustand)
+.env.local
+tailwind.config.js
+next.config.js
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📈 Monitoring
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Sentry](https://sentry.io/) is integrated for real-time error reporting and performance monitoring.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
